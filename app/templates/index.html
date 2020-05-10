@@ -1,0 +1,25 @@
+{% extends "layout.html" %}
+{% block content %}
+<table class="table">
+    <thead>
+    <tr>
+        <th scope="col">Name</th>
+        <th scope="col">Sex</th>
+        <th scope="col">Age</th>
+        <th scope="col">Height (in)</th>
+        <th scope="col">Weight (lbs)</th>
+    </tr>
+    </thead>
+    <tbody>
+    {% for bio in bios %}
+    <tr>
+        <td><a href="view/{{bio.id}}">{{ bio.name }}</a></td>
+        <td>{{ bio.sex }}</td>
+        <td>{{ bio.age }}</td>
+        <td>{{ bio.height_in }}</td>
+        <td>{{ bio.weight_lbs }}</td>
+    </tr>
+    {% endfor %}
+    </tbody>
+</table>
+{% endblock %}
