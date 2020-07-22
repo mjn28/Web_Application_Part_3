@@ -1,7 +1,7 @@
 CREATE DATABASE oscarAges;
 use oscarAges;
 
-CREATE TABLE IF NOT EXISTS biometrics (
+CREATE TABLE IF NOT EXISTS femaleOscarAges (
     `id` INT AUTO_INCREMENT,
     `name` VARCHAR(15) CHARACTER SET utf8,
     `sex` VARCHAR(1) CHARACTER SET utf8,
@@ -10,7 +10,7 @@ CREATE TABLE IF NOT EXISTS biometrics (
     `weight_lbs` INT,
     PRIMARY KEY (`id`)
 );
-INSERT INTO biometrics (name,sex,age,height_in,weight_lbs) VALUES
+INSERT INTO femaleOscarAges (name,sex,age,height_in,weight_lbs) VALUES
     ('Alex','M',41,74,170),
     ('Bert','M',42,68,166),
     ('Carl','M',32,70,155),
