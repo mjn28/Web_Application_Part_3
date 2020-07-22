@@ -1,5 +1,5 @@
-CREATE DATABASE biometricData;
-use biometricData;
+CREATE DATABASE oscarAges;
+use oscarAges;
 
 CREATE TABLE IF NOT EXISTS biometrics (
     `id` INT AUTO_INCREMENT,

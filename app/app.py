@@ -12,13 +12,13 @@ app.config['MYSQL_DATABASE_HOST'] = 'db'
 app.config['MYSQL_DATABASE_USER'] = 'root'
 app.config['MYSQL_DATABASE_PASSWORD'] = 'root'
 app.config['MYSQL_DATABASE_PORT'] = 3306
-app.config['MYSQL_DATABASE_DB'] = 'biometricData'
+app.config['MYSQL_DATABASE_DB'] = 'oscarAges'
 mysql.init_app(app)
 
 
 @app.route('/', methods=['GET'])
 def index():
-    user = {'username': 'Biometrics Project'}
+    user = {'username': 'Female Oscar Winner Ages'}
     cursor = mysql.get_db().cursor()
     cursor.execute('SELECT * FROM biometrics ORDER BY name')
     result = cursor.fetchall()
