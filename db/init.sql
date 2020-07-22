@@ -3,14 +3,14 @@ use oscarAges;
 
 CREATE TABLE IF NOT EXISTS femaleOscarAges (
     `id` INT AUTO_INCREMENT,
-    `name` INT,
-    `sex` INT,
-    `age` VARCHAR(22) CHARACTER SET utf8,
-    `height_in` VARCHAR(35) CHARACTER SET utf8,
+    `year` INT,
+    `ages` INT,
+    `names` VARCHAR(22) CHARACTER SET utf8,
+    `film` VARCHAR(35) CHARACTER SET utf8,
     PRIMARY KEY (`id`)
 
 );
-INSERT INTO femaleOscarAges (name,sex,age,height_in) VALUES
+INSERT INTO femaleOscarAges (year,ages,names,film) VALUES
     (1928, 22,' Janet Gaynor',' Seventh Heaven'),
     (1929, 37,' Mary Pickford',' Coquette'),
     (1930, 28,' Norma Shearer',' The Divorcee	'),

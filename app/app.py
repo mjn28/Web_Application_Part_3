@@ -20,7 +20,7 @@ mysql.init_app(app)
 def index():
     user = {'username': 'Female Oscar Winner Ages'}
     cursor = mysql.get_db().cursor()
-    cursor.execute('SELECT * FROM femaleOscarAges ORDER BY name')
+    cursor.execute('SELECT * FROM femaleOscarAges ORDER BY year')
     result = cursor.fetchall()
     return render_template('index.html', title='Home', user=user, actress=result)
 
@@ -44,10 +44,10 @@ def form_edit_get(age_id):
 @app.route('/edit/<int:age_id>', methods=['POST'])
 def form_update_post(age_id):
     cursor = mysql.get_db().cursor()
-    inputData = (request.form.get('name'), request.form.get('sex'), request.form.get('age'),
-                 request.form.get('height_in'), request.form.get('weight_lbs'), age_id)
-    sql_update_query = """UPDATE femaleOscarAges t SET t.name = %s, t.sex = %s, t.age = %s, t.height_in = 
-    %s, t.weight_lbs = %s WHERE t.id = %s """
+    inputData = (request.form.get('year'), request.form.get('ages'), request.form.get('names'),
+                 request.form.get('film'), age_id)
+    sql_update_query = """UPDATE femaleOscarAges t SET t.year = %s, t.ages = %s, t.names = %s, t.film = 
+    %s WHERE t.id = %s """
     cursor.execute(sql_update_query, inputData)
     mysql.get_db().commit()
     return redirect("/", code=302)
@@ -61,9 +61,9 @@ def form_insert_get():
 @app.route('/actress/new', methods=['POST'])
 def form_insert_post():
     cursor = mysql.get_db().cursor()
-    inputData = (request.form.get('name'), request.form.get('sex'), request.form.get('age'),
-                 request.form.get('height_in'), request.form.get('weight_lbs'))
-    sql_insert_query = """INSERT INTO femaleOscarAges (name,sex,age,height_in,weight_lbs) VALUES (%s,%s,%s,%s,%s) """
+    inputData = (request.form.get('year'), request.form.get('ages'), request.form.get('names'),
+                 request.form.get('film'))
+    sql_insert_query = """INSERT INTO femaleOscarAges (year,ages,names,film) VALUES (%s,%s,%s,%s) """
     cursor.execute(sql_insert_query, inputData)
     mysql.get_db().commit()
     return redirect("/", code=302)
