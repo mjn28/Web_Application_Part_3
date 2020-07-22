@@ -1,25 +1,25 @@
 {% extends "layout.html" %}
 {% block content %}
-<form action="/edit/{{bio.id}}" method="post">
+<form action="/edit/{{age.id}}" method="post">
     <div class="row">
         <div class="col">
             <label for="name">Year</label>
-            <input id="name" type="text" class="form-control" placeholder="Year" name="Year" value="{{bio.name}}">
+            <input id="name" type="text" class="form-control" placeholder="Year" name="Year" value="{{age.name}}">
         </div>
         <div class="col">
             <label for="sex">Age</label>
-            <input id="sex" type="text" class="form-control" placeholder="Age" name="age" value="{{bio.sex}}">
+            <input id="sex" type="text" class="form-control" placeholder="Age" name="age" value="{{age.sex}}">
         </div>
         <div class="col">
             <label for="age">Name</label>
-            <input id="age" type="text" class="form-control" placeholder="Name" name="name" value="{{bio.age}}">
+            <input id="age" type="text" class="form-control" placeholder="Name" name="name" value="{{age.age}}">
         </div>
     </div>
 
     <div class="row">
         <div class="col">
             <label for="height_in">Film</label>
-            <input id="height_in" type="text" class="form-control" placeholder="Film" name="film" value="{{bio.height_in}}">
+            <input id="height_in" type="text" class="form-control" placeholder="Film" name="film" value="{{age.height_in}}">
         </div>
     </div>
     <button type="submit" class="btn btn-success">Save</button>

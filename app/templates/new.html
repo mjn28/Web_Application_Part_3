@@ -1,24 +1,24 @@
 {% extends "layout.html" %}
 {% block content %}
-<form action="/bios/new" method="POST">
+<form action="/actress/new" method="POST">
     <div class="row">
         <div class="col">
-            <label for="name">Year</label>
-            <input id="name" type="text" class="form-control" placeholder="Year" name="year">
+            <label for="year">Year</label>
+            <input id="year" type="text" class="form-control" placeholder="Year" name="year">
         </div>
         <div class="col">
-            <label for="sex">Age</label>
-            <input id="sex" type="text" class="form-control" placeholder="Age" name="age">
+            <label for="age">Age</label>
+            <input id="age" type="text" class="form-control" placeholder="Age" name="age">
         </div>
         <div class="col">
-            <label for="age">Name</label>
-            <input id="age" type="text" class="form-control" placeholder="Name" name="name">
+            <label for="name">Name</label>
+            <input id="name" type="text" class="form-control" placeholder="Name" name="name">
         </div>
     </div>
     <div class="row">
         <div class="col">
-            <label for="height_in">Film</label>
-            <input id="height_in" type="text" class="form-control" placeholder="Film" name="film">
+            <label for="film">Film</label>
+            <input id="film" type="text" class="form-control" placeholder="Film" name="film">
         </div>
     </div>
     <button type="submit" class="btn btn-success">Save</button>

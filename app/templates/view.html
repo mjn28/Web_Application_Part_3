@@ -2,19 +2,19 @@
 {% block content %}
 
 <div class="card" class="m-5 p-2">
-    <h5 class="card-title">  {{ bio.name }}</h5>
+    <h5 class="card-title">  {{age.name }}</h5>
 
     <ul class="list-group list-group-flush">
-        <li class="list-group-item">Name - {{ bio.sex }}</li>
-        <li class="list-group-item">Age - {{ bio.age }}</li>
-        <li class="list-group-item">Film - {{ bio.height_in }}</li>
+        <li class="list-group-item">Name - {{age.sex }}</li>
+        <li class="list-group-item">Age - {{age.age }}</li>
+        <li class="list-group-item">Film - {{age.height_in }}</li>
 
     </ul>
     <div class="card-body">
-        <a href="/edit/{{bio.id}}" class="card-link btn btn-primary">Edit</a>
+        <a href="/edit/{{age.id}}" class="card-link btn btn-primary">Edit</a>
     </div>
 </div>
-<form action="/delete/{{bio.id}}" method="post"><button type="submit" class="btn btn-danger">Delete</button></form>
+<form action="/delete/{{age.id}}" method="post"><button type="submit" class="btn btn-danger">Delete</button></form>
 
 
 {% endblock %}

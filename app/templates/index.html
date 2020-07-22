@@ -10,13 +10,13 @@
     </tr>
     </thead>
     <tbody>
-    {% for bio in bios %}
+    {% for age in actress %}
     <tr>
-        <td><a href="view/{{bio.id}}">{{ bio.name }}</a></td>
-        <td>{{ bio.sex }}</td>
-        <td>{{ bio.age }}</td>
-        <td>{{ bio.height_in }}</td>
-        <td>{{ bio.weight_lbs }}</td>
+        <td><a href="view/{{age.id}}">{{age.name }}</a></td>
+        <td>{{age.sex }}</td>
+        <td>{{age.age }}</td>
+        <td>{{age.height_in }}</td>
+        <td>{{age.weight_lbs }}</td>
     </tr>
     {% endfor %}
     </tbody>

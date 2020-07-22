@@ -22,30 +22,30 @@ def index():
     cursor = mysql.get_db().cursor()
     cursor.execute('SELECT * FROM biometrics ORDER BY name')
     result = cursor.fetchall()
-    return render_template('index.html', title='Home', user=user, bios=result)
+    return render_template('index.html', title='Home', user=user, actress=result)
 
 
-@app.route('/view/<int:bio_id>', methods=['GET'])
-def record_view(bio_id):
+@app.route('/view/<int:age_id>', methods=['GET'])
+def record_view(age_id):
     cursor = mysql.get_db().cursor()
-    cursor.execute('SELECT * FROM biometrics WHERE id=%s', bio_id)
+    cursor.execute('SELECT * FROM biometrics WHERE id=%s', age_id)
     result = cursor.fetchall()
-    return render_template('view.html', title='View Form', bio=result[0])
+    return render_template('view.html', title='View Form', age=result[0])
 
 
-@app.route('/edit/<int:bio_id>', methods=['GET'])
-def form_edit_get(bio_id):
+@app.route('/edit/<int:age_id>', methods=['GET'])
+def form_edit_get(age_id):
     cursor = mysql.get_db().cursor()
-    cursor.execute('SELECT * FROM biometrics WHERE id=%s', bio_id)
+    cursor.execute('SELECT * FROM biometrics WHERE id=%s', age_id)
     result = cursor.fetchall()
-    return render_template('edit.html', title='Edit Form', bio=result[0])
+    return render_template('edit.html', title='Edit Form', age=result[0])
 
 
-@app.route('/edit/<int:bio_id>', methods=['POST'])
-def form_update_post(bio_id):
+@app.route('/edit/<int:age_id>', methods=['POST'])
+def form_update_post(age_id):
     cursor = mysql.get_db().cursor()
     inputData = (request.form.get('name'), request.form.get('sex'), request.form.get('age'),
-                 request.form.get('height_in'), request.form.get('weight_lbs'), bio_id)
+                 request.form.get('height_in'), request.form.get('weight_lbs'), age_id)
     sql_update_query = """UPDATE biometrics t SET t.name = %s, t.sex = %s, t.age = %s, t.height_in = 
     %s, t.weight_lbs = %s WHERE t.id = %s """
     cursor.execute(sql_update_query, inputData)
@@ -53,12 +53,12 @@ def form_update_post(bio_id):
     return redirect("/", code=302)
 
 
-@app.route('/bios/new', methods=['GET'])
+@app.route('/actress/new', methods=['GET'])
 def form_insert_get():
     return render_template('new.html', title='New Biometric Form')
 
 
-@app.route('/bios/new', methods=['POST'])
+@app.route('/actress/new', methods=['POST'])
 def form_insert_post():
     cursor = mysql.get_db().cursor()
     inputData = (request.form.get('name'), request.form.get('sex'), request.form.get('age'),
@@ -69,11 +69,11 @@ def form_insert_post():
     return redirect("/", code=302)
 
 
-@app.route('/delete/<int:bio_id>', methods=['POST'])
-def form_delete_post(bio_id):
+@app.route('/delete/<int:age_id>', methods=['POST'])
+def form_delete_post(age_id):
     cursor = mysql.get_db().cursor()
     sql_delete_query = """DELETE FROM biometrics WHERE id = %s """
-    cursor.execute(sql_delete_query, bio_id)
+    cursor.execute(sql_delete_query, age_id)
     mysql.get_db().commit()
     return redirect("/", code=302)
 
@@ -98,20 +98,20 @@ def api_retrieve(bio_id) -> str:
     return resp
 
 
-@app.route('/api/v1/bios/', methods=['POST'])
+@app.route('/api/v1/actress/', methods=['POST'])
 def api_add() -> str:
     resp = Response(status=201, mimetype='application/json')
     return resp
 
 
-@app.route('/api/v1/bios/<int:bio_id>', methods=['PUT'])
-def api_edit(bio_id) -> str:
+@app.route('/api/v1/actress/<int:age_id>', methods=['PUT'])
+def api_edit(age_id) -> str:
     resp = Response(status=201, mimetype='application/json')
     return resp
 
 
-@app.route('/api/bios/<int:bio_id>', methods=['DELETE'])
-def api_delete(bio_id) -> str:
+@app.route('/api/actress/<int:age_id>', methods=['DELETE'])
+def api_delete(age_id) -> str:
     resp = Response(status=210, mimetype='application/json')
     return resp
 
