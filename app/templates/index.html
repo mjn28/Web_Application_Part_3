@@ -12,10 +12,10 @@
     <tbody>
     {% for age in actress %}
     <tr>
-        <td><a href="view/{{age.id}}">{{age.year }}</a></td>
-        <td>{{age.ages }}</td>
-        <td>{{age.names }}</td>
-        <td>{{age.film }}</td>
+        <td><a href="view/{{age.id}}">{{age.fldYear }}</a></td>
+        <td>{{age.fldAge }}</td>
+        <td>{{age.fldName }}</td>
+        <td>{{age.fldFilm }}</td>
     </tr>
     {% endfor %}
     </tbody>

@@ -20,7 +20,7 @@ mysql.init_app(app)
 def index():
     user = {'username': 'Female Oscar Winner Ages'}
     cursor = mysql.get_db().cursor()
-    cursor.execute('SELECT * FROM femaleOscarAges ORDER BY year')
+    cursor.execute('SELECT * FROM femaleOscarAges ORDER BY fldyear')
     result = cursor.fetchall()
     return render_template('index.html', title='Home', user=user, actress=result)
 
@@ -44,9 +44,9 @@ def form_edit_get(age_id):
 @app.route('/edit/<int:age_id>', methods=['POST'])
 def form_update_post(age_id):
     cursor = mysql.get_db().cursor()
-    inputData = (request.form.get('year'), request.form.get('ages'), request.form.get('names'),
-                 request.form.get('film'), age_id)
-    sql_update_query = """UPDATE femaleOscarAges t SET t.year = %s, t.ages = %s, t.names = %s, t.film = 
+    inputData = (request.form.get('fldYear'), request.form.get('fldAge'), request.form.get('fldName'),
+                 request.form.get('fldFilm'), age_id)
+    sql_update_query = """UPDATE femaleOscarAges t SET t.fldYear = %s, t.fldAge = %s, t.fldName = %s, t.fldFilm = 
     %s WHERE t.id = %s """
     cursor.execute(sql_update_query, inputData)
     mysql.get_db().commit()
@@ -61,9 +61,9 @@ def form_insert_get():
 @app.route('/actress/new', methods=['POST'])
 def form_insert_post():
     cursor = mysql.get_db().cursor()
-    inputData = (request.form.get('year'), request.form.get('ages'), request.form.get('names'),
-                 request.form.get('film'))
-    sql_insert_query = """INSERT INTO femaleOscarAges (year,ages,names,film) VALUES (%s,%s,%s,%s) """
+    inputData = (request.form.get('fldYear'), request.form.get('fldAge'), request.form.get('fldName'),
+                 request.form.get('fldFilm'))
+    sql_insert_query = """INSERT INTO femaleOscarAges (fldYear,fldAge,fldName,fldFilm) VALUES (%s,%s,%s,%s) """
     cursor.execute(sql_insert_query, inputData)
     mysql.get_db().commit()
     return redirect("/", code=302)
